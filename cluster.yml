@@ -1,0 +1,20 @@
+cluster_name: homelab_k8s
+ssh_key_path: ~/.ssh/k8s_rsa
+nodes:
+  - address: 10.0.10.53
+    user: rancher
+    role:
+      - controlplane
+      - etcd
+    hostname_override: kube-master1
+  - address: 10.0.10.54
+    user: rancher
+    role:
+      - worker
+    hostname_override: kube-worker1
+
+network:
+  plugin: canal
+ingress:
+  provider: none
+  
